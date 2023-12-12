@@ -42,7 +42,7 @@ export default function Mcq(props) {
         aria-label={ariaQuestion || null}
       >
 
-        {props._items.map(({ text, altText, _index, _isActive, _shouldBeSelected, _isHighlighted }, index) =>
+        {props._items.map(({ text, _index, _isActive, _shouldBeSelected, _isHighlighted }, index) =>
 
           <div
             className={classes([
@@ -61,8 +61,8 @@ export default function Mcq(props) {
               disabled={!_isEnabled}
               checked={_isActive}
               aria-label={!_shouldShowMarking ?
-                a11y.normalize(altText || text) :
-                `${_shouldBeSelected ? ariaLabels.correct : ariaLabels.incorrect}, ${_isActive ? ariaLabels.selectedAnswer : ariaLabels.unselectedAnswer}. ${a11y.normalize(altText || text)}`}
+                a11y.normalize(text) :
+                `${_shouldBeSelected ? ariaLabels.correct : ariaLabels.incorrect}, ${_isActive ? ariaLabels.selectedAnswer : ariaLabels.unselectedAnswer}. ${a11y.normalize(text)}`}
               data-adapt-index={_index}
               onKeyPress={onKeyPress}
               onChange={onItemSelect}
@@ -82,29 +82,6 @@ export default function Mcq(props) {
               htmlFor={`${_id}-${index}-input`}
               data-adapt-index={_index}
             >
-
-              <span className='mcq-item__state'>
-                <span
-                  className={classes([
-                    'mcq-item__icon',
-                    'mcq-item__answer-icon',
-                    _isRadio ? 'is-radio' : 'is-checkbox'
-                  ])}
-                >
-
-                  <span className='icon'></span>
-
-                </span>
-
-                <span className='mcq-item__icon mcq-item__correct-icon'>
-                  <span className='icon'></span>
-                </span>
-
-                <span className='mcq-item__icon mcq-item__incorrect-icon'>
-                  <span className='icon'></span>
-                </span>
-              </span>
-
               <span className='mcq-item__text'>
                 <span className='mcq-item__text-inner' dangerouslySetInnerHTML={{ __html: compile(text) }}>
                 </span>

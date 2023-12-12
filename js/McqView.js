@@ -1,3 +1,4 @@
+import Adapt from 'core/js/adapt';
 import QuestionView from 'core/js/views/questionView';
 
 class McqView extends QuestionView {
@@ -8,6 +9,10 @@ class McqView extends QuestionView {
     this.onItemFocus = this.onItemFocus.bind(this);
     this.onItemBlur = this.onItemBlur.bind(this);
     super.initialize(...args);
+  }
+
+  addButtonsView() {
+    Adapt.trigger("questionView:AddButtonsView", this);
   }
 
   setupQuestion() {
